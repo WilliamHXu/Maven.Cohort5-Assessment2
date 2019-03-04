@@ -59,8 +59,11 @@ public class Person {
 
     @Override
     public boolean equals(Object o) {
+        if(o == null){
+            return false;
+        }
         Person oPerson = (Person)o;
-        Person person1 = new Person(null, null, null);
+        Person person1 = new Person();
         if((oPerson.equalsPerson(person1) && !this.equalsPerson(person1))){
             return false;
         }
