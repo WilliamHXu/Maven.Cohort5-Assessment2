@@ -1,5 +1,7 @@
 package rocks.zipcode.assessment2.fundamentals;
 
+import com.sun.xml.internal.fastinfoset.util.CharArray;
+
 public class BasicStringUtils {
     /**
      * @param string1 - Base string to be added to
@@ -7,7 +9,7 @@ public class BasicStringUtils {
      * @return concatenation of `string1` and `string2`
      */
     public static String concatentate(String string1, String string2) {
-        return null;
+        return string1 + string2;
     }
 
     /**
@@ -15,7 +17,11 @@ public class BasicStringUtils {
      * @return an identical string with characters in reverse order
      */
     public static String reverse(String string1) {
-        return null;
+        String result = "";
+        for (int i = string1.length() - 1; i >= 0; i--){
+            result += string1.charAt(i);
+        }
+        return result;
     }
 
     /**
@@ -24,7 +30,9 @@ public class BasicStringUtils {
      * @return concatenation of the reverse of `string1` and reverse of `string2`
      */
     public static String reverseThenConcatenate(String string1, String string2) {
-        return null;
+        String reverse1 = reverse(string1);
+        String reverse2 = reverse(string2);
+        return reverse1 + reverse2;
     }
 
     /**
@@ -33,7 +41,21 @@ public class BasicStringUtils {
      * @return `string` with `charactersToRemove` removed
      */
     public static String removeCharacters(String string, String charactersToRemove) {
-        return null;
+        char[] remove = charactersToRemove.toCharArray();
+        String result = "";
+        for (int i = 0; i < string.length(); i++){
+            boolean removeFlag = false;
+            for(char toCheck : remove){
+                if (string.charAt(i) == toCheck){
+                    removeFlag = true;
+                    break;
+                }
+            }
+            if(!removeFlag){
+                result += string.charAt(i);
+            }
+        }
+        return result;
     }
 
     /**
@@ -42,6 +64,7 @@ public class BasicStringUtils {
      * @return reverse of `string` with `charactersToRemove` removed
      */
     public static String removeCharactersThenReverse(String string, String charactersToRemove) {
-        return null;
+        String removed = removeCharacters(string, charactersToRemove);
+        return reverse(removed);
     }
 }

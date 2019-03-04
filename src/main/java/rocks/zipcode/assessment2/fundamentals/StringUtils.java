@@ -10,7 +10,7 @@ public class StringUtils {
      * @return `stringToBePadded` flushed right by left-padding
      */
     public static String padLeft(String stringToBePadded, int amountOfPadding) {
-        return null;
+        return padding(stringToBePadded, amountOfPadding) + stringToBePadded;
     }
 
     /**
@@ -19,7 +19,15 @@ public class StringUtils {
      * @return `stringToBePadded` flushed right by right-padding
      */
     public static String padRight(String stringToBePadded, int amountOfPadding) {
-        return null;
+        return stringToBePadded + padding(stringToBePadded, amountOfPadding);
+    }
+
+    public static String padding(String stringToBePadded, int amountOfPadding){
+        String padding = "";
+        for (int i = 0; i < amountOfPadding-stringToBePadded.length(); i++){
+            padding += " ";
+        }
+        return padding;
     }
 
     /**
@@ -28,7 +36,11 @@ public class StringUtils {
      * @return the string repeated and concatenated `n` times
      */
     public static String repeatString(String stringToBeRepeated, int numberOfTimeToRepeat) {
-        return null;
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < numberOfTimeToRepeat; i++){
+            result.append(stringToBeRepeated);
+        }
+        return result.toString();
     }
 
     /**
@@ -36,7 +48,19 @@ public class StringUtils {
      * @return - true if string only contains alpha characters
      */
     public static Boolean isAlphaString(String string) {
-        return null;
+        Boolean result = true;
+        char[] chars = string.toCharArray();
+        for (char c : chars){
+            if (isNotAlpha(c)){
+                result = false;
+                break;
+            }
+        }
+        return result;
+    }
+
+    public static boolean isNotAlpha(char c){
+        return (c < ' ' || (c > ' ' && c < 'A') || (c > 'Z' && c < 'a') || c > 'z');
     }
 
     /**
@@ -44,7 +68,19 @@ public class StringUtils {
      * @return - true if string only contains numeric characters
      */
     public static Boolean isNumericString(String string) {
-        return null;
+        Boolean result = true;
+        char[] chars = string.toCharArray();
+        for (char c : chars){
+            if (isNotNumeric(c)){
+                result = false;
+                break;
+            }
+        }
+        return result;
+    }
+
+    public static boolean isNotNumeric(char c){
+        return (c < '0' || c > '9');
     }
 
     /**
@@ -52,6 +88,14 @@ public class StringUtils {
      * @return - true if string only contains special characters
      */
     public static Boolean isSpecialCharacterString(String string) {
-        return null;
+        Boolean result = true;
+        char[] chars = string.toCharArray();
+        for (char c : chars){
+            if(!isNotNumeric(c) || !isNotAlpha(c)){
+                result = false;
+                break;
+            }
+        }
+        return result;
     }
 }
