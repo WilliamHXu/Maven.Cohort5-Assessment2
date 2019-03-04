@@ -1,7 +1,5 @@
 package rocks.zipcode.assessment2.fundamentals;
 
-import com.sun.xml.internal.fastinfoset.util.CharArray;
-
 public class BasicStringUtils {
     /**
      * @param string1 - Base string to be added to
