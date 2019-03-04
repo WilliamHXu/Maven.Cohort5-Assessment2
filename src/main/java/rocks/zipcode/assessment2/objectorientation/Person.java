@@ -49,29 +49,38 @@ public class Person {
         this.address = address;
     }
 
-    @Override
-    public boolean equals(Object o){
-        Person person = (Person) o;
-        boolean result = this.equalsPerson(person);
-        return result;
-    }
 
 //    @Override
-//    public boolean equals(Object o) {
-//        boolean result;
-//        if (o == this){
-//            result = true;
-//        }
-//
-//        else if(!(o instanceof Person)){
-//            result = false;
-//        }
-//        else {
-//            Person person = (Person) o;
-//            result = this.equalsPerson(person);
-//        }
+//    public boolean equals(Object o){
+//        Person person = (Person) o;
+//        boolean result = this.equalsPerson(person);
 //        return result;
 //    }
+
+    @Override
+    public boolean equals(Object o) {
+        Person oPerson = (Person)o;
+        Person person1 = new Person();
+        if((oPerson.equalsPerson(person1) && !this.equalsPerson(person1))){
+            return false;
+        }
+        if((!oPerson.equalsPerson(person1) && this.equalsPerson(person1))){
+            return false;
+        }
+        boolean result;
+        if (o == this){
+            result = true;
+        }
+
+        else if(!(o instanceof Person)){
+            result = false;
+        }
+        else {
+            Person person = (Person) o;
+            result = this.equalsPerson(person);
+        }
+        return result;
+    }
 
     public boolean equalsPerson(Person person){
         boolean result = true;
