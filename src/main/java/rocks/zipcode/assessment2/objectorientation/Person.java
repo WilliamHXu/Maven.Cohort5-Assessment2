@@ -60,7 +60,7 @@ public class Person {
     @Override
     public boolean equals(Object o) {
         Person oPerson = (Person)o;
-        Person person1 = new Person();
+        Person person1 = new Person(null, "PersonName", null);
         if((oPerson.equalsPerson(person1) && !this.equalsPerson(person1))){
             return false;
         }
